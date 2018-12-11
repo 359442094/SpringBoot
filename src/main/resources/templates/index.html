@@ -3,6 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="application/javascript" src="http://localhost:8080/js/jquery-3.3.1.min.js"></script>
+    <script type="application/javascript">
+        function submitJsonInfo() {
+            $.ajax({
+                type:"post",
+                url:"http://localhost:8080/getJSON",
+                data:getVars(),
+                dataType:"json",
+                contentType:"application/json;charset=utf-8;",
+                success:function (data) {
+                    alert("返回 data:"+data);
+                },
+                error:function (data) {
+                    alert("错误 data:"+data);
+                }
+            });
+        }
+        
+       function getVars() {
+            var $vars={
+                a:"A",
+                b:"B",
+                c:"C",
+                d:"D"
+            };
+            return $vars;
+        }
+    </script>
+
 </head>
 <body>
     Result:
@@ -11,5 +40,10 @@
             [[${d.dname}]]
         </li>
     </ul>
+
+    <!--提交json数据至后端-->
+    <a href="javascript:void(0);" onclick="submitJsonInfo();">提交json数据至后端</a>
+
+
 </body>
 </html>
