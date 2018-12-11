@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    Result:
+    <ul>
+        <li th:each="d,dStatus:${session.maps['depts']}">
+            [[${d.dname}]]
+        </li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  servlet:
+    path: /
+
+mybatis:
+  mapper-locations: classpath:sk/springboot/mapper/*.xml
+  type-aliases-package: sk.springboot.entity
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: root
+
+thymeleaf:
+  encoding: UTF-8
+  cache: false
+  prefix: classpath:templates/
+  suffix: .html
+
+pagehelper:
+  helperDialect: oracle
+  reasonable: true
+  supportMethodsArguments: true
+  pageSizeZero: true
+  params: count=countSql
