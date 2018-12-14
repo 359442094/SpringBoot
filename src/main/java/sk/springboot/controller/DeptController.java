@@ -4,13 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 import sk.springboot.entity.Dept;
 import sk.springboot.service.DeptService;
-
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -34,7 +30,7 @@ public class DeptController {
      * */
     @ResponseBody
     @RequestMapping("/getJSON")
-    public String getJSON(@RequestBody String vars){
+    public String getJSON(String vars){
         System.out.println("前端传值的参数为:");
         System.out.println(vars);
         return "result";
@@ -52,6 +48,18 @@ public class DeptController {
         map.put("encryptedMsg","报文密文");
         map.put("encryptedSk","会话密钥密文");
         return map;
+    }
+
+    /**
+     * Test MybatisPlus insert
+     * */
+    @ResponseBody
+    @RequestMapping(path = "/insert",method = RequestMethod.GET)
+    public boolean insertDept(){
+        Dept dept=new Dept();
+        dept.setDname("Test MybatisPlus insert");
+        boolean insert = deptService.insert(dept);
+        return insert;
     }
 
 }
